@@ -1,8 +1,21 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from '../core/pages/login/login.component';
 
 export const routes: Routes = [
 
-    // {
-    //     path: 'home', loadComponent:()=> import('../feature/pages/home/home.component').then(c=> c.HomeComponent)
-    // }
+    {
+        path: 'authlayout', loadComponent:()=> import('../core/layout/authlayout/authlayout.component').then(c=> c.AuthlayoutComponent),
+        children:[
+
+            {
+                path:'', redirectTo:'login' ,pathMatch:'full'
+            },
+            {
+                path:'login', loadComponent:()=> import('../core/pages/login/login.component').then(c=> c.LoginComponent)
+            },
+            {
+                path:'register', loadComponent:()=> import('../core/pages/register/register.component').then(c=> c.RegisterComponent)
+            }
+        ]
+    }
 ];

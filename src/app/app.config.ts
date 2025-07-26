@@ -5,6 +5,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideAnimationsAsync}from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
+import { BASE_URL } from '../../projects/auth/src/lib/baseurl';
 
 export const appConfig: ApplicationConfig = {
   
@@ -20,7 +21,10 @@ export const appConfig: ApplicationConfig = {
     
     
     
-    
+    {
+      provide:BASE_URL,
+      useValue :'https://exam.elevateegy.com/'
+    },
     
     
     
