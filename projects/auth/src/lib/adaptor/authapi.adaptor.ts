@@ -1,5 +1,4 @@
 import { Adaptor } from '../interfaces/adaptor';
-import { Token } from './../../../../../node_modules/lightningcss/node/ast.d';
 import { Injectable } from '@angular/core';
 
 @Injectable({

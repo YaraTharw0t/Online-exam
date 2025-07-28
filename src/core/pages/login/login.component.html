@@ -1,1 +1,44 @@
-<p>login works!</p>
+<section>
+  <h3 class="font-bold text-2xl pb-[3rem] capitalize">sign in</h3>
+
+  <div class="card grid gap-5 w-[50%]">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-user"></i>
+      </p-inputgroup-addon>
+      <input pInputText [(ngModel)]="email" placeholder="Enter Email" />
+    </p-inputgroup>
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-eye"></i>
+      </p-inputgroup-addon>
+      <input pInputText [(ngModel)]="number" placeholder="Password" />
+    </p-inputgroup>
+    <a
+      [routerLink]="['/authlayout/revoverpassword']"
+      class="flex justify-end cursor-pointer capitalize text-blue-500"
+      >recover password ?</a
+    >
+    <div class="flex justify-center">
+      <p-button label="Sigin In" class="" />
+    </div>
+    <p class="text-center capitalize">or continue with</p>
+    <div class="icons flex justify-between">
+      <a href="">
+        <img src="../Google Button.svg" alt="" />
+      </a>
+
+      <a href="">
+        <img src="../Twitter Button.svg" alt="" />
+      </a>
+
+      <a href="">
+        <img src="../Facebook Button.svg" alt="" />
+      </a>
+
+      <a href="">
+        <img src="../Apple Button.svg" alt="" />
+      </a>
+    </div>
+  </div>
+</section>

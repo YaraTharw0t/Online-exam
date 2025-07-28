@@ -7,9 +7,11 @@ import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
 import { BASE_URL } from '../../projects/auth/src/lib/baseurl';
 
+
 export const appConfig: ApplicationConfig = {
   
   providers: [
+
      provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     providePrimeNG({
@@ -18,8 +20,8 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     
-    
-    
+
+
     
     {
       provide:BASE_URL,
@@ -35,6 +37,7 @@ export const appConfig: ApplicationConfig = {
     
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
+
    
    
   
