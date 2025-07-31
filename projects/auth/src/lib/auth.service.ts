@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { AuthapiadaptService } from './adaptor/authapi.adaptor';
 import { AuthEndPoind } from './enums/authendpoind';
+import { autthapi } from './base/authapi';
+import { Auth, AuthResponse, LoginForm, registerForm } from './interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService  implements autthapi{
 
  _baseurl = inject(BASE_URL)
  _httpclient= inject(HttpClient)
@@ -16,11 +18,25 @@ export class AuthService {
   _authapiadaptService  = inject(AuthapiadaptService)
 
 
-
-Login(data:any):Observable<any>{
-  return   this._httpclient.post(this._baseurl+AuthEndPoind,data).pipe(map(res=>this._authapiadaptService.adapt(res)),
+//:loginform ==> interface data go to api 
+//<authresponse> ===> interface for  data form adapt 
+//<auth> ====> interface come from api 
+Login(data:LoginForm):Observable<AuthResponse>{
+  return  this._httpclient.post<Auth>(this._baseurl+ AuthEndPoind.LOGIN,data).pipe(map(res=>this._authapiadaptService.adapt(res)),
 catchError(err=>of(err))
 )
 }
 
+signup(data:registerForm):Observable<AuthResponse>{
+
+  return this._httpclient.post<Auth>(this._baseurl+ AuthEndPoind.SIGNUP,data).pipe(map(res=>this._authapiadaptService.adapt(res)),
+  catchError(err =>of(err))
+
+
+
+)
 }
+
+
+}
+

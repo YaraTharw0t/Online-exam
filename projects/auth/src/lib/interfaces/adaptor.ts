@@ -1,8 +1,8 @@
-import { Auth } from "./auth";
+import { Auth, AuthResponse } from "./auth";
 
 export interface Adaptor {
 
-    adapt(data:Auth):any
+    adapt(data:Auth):AuthResponse
 }
 
 
