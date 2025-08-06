@@ -126,14 +126,12 @@
         }
       </div>
       <div>
-        <input
-          class="w-[100%]"
-          type="password"
-          pInputText
+        <p-password
+          [toggleMask]="true"
           formControlName="password"
-          placeholder="Password"
+          placeholder="password"
+          [feedback]="false"
         />
-
         @if(RegisterForm.get('password')?.invalid
         &&(RegisterForm.get('password')?.touched||RegisterForm.get('password')?.dirty)){
         <div class="error">
@@ -156,13 +154,13 @@
         }
       </div>
       <div>
-        <input
-          class="w-[100%]"
-          type="password"
-          pInputText
+        <p-password
+          [toggleMask]="true"
+          placeholder="repassword"
           formControlName="rePassword"
-          placeholder="rePassword"
+          [feedback]="false"
         />
+
         @if(RegisterForm.get('rePassword')?.invalid
         &&(RegisterForm.get('rePassword')?.touched||RegisterForm.get('rePassword')?.dirty)){
         <div class="error">
@@ -225,7 +223,12 @@
       </div>
 
       <div>
-        <p-button label="Create Account" type="submit" class="" />
+        <p-button label="Create Account" type="submit" />
+        @if (isloading) {
+        <div class="card flex justify-center">
+          <p-progress-spinner ariaLabel="loading" />
+        </div>
+        }
       </div>
       <p class="text-center capitalize">or continue with</p>
       <div class="icons flex justify-between">

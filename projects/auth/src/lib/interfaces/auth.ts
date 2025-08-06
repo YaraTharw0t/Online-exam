@@ -43,3 +43,13 @@ export interface AuthResponse {
 
  }
 
+ export interface forgetpass{
+  message:string
+  info:string
+
+ }
+
+ export interface forgetform{
+  email:string
+ }
+

@@ -5,7 +5,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { AuthapiadaptService } from './adaptor/authapi.adaptor';
 import { AuthEndPoind } from './enums/authendpoind';
 import { autthapi } from './base/authapi';
-import { Auth, AuthResponse, LoginForm, registerForm } from './interfaces/auth';
+import { Auth, AuthResponse, forgetform, forgetpass, LoginForm, registerForm } from './interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,14 @@ export class AuthService  implements autthapi{
 
   _authapiadaptService  = inject(AuthapiadaptService)
 
+
+
+
+  // GetToken(){
+
+  //   localStorage.setItem('token',res.token)
+    
+  // }
 
 //:loginform ==> interface data go to api 
 //<authresponse> ===> interface for  data form adapt 
@@ -35,6 +43,10 @@ signup(data:registerForm):Observable<AuthResponse>{
 
 
 )
+}
+ ForgetPassword(data:forgetform): Observable<forgetpass> {
+
+    return this._httpclient.post<forgetpass>(this._baseurl+AuthEndPoind.FORGETPASSWORD,data).pipe(map(res=>res))
 }
 
 

@@ -44,10 +44,22 @@ body {
 li a {
   padding: 10px 15px;
   transition: all 0.5s ease-in-out;
+
+  &.router-link-active {
+    background-color: #4461f2;
+    color: #ffffff;
+    border-radius: 7px;
+  }
+  .clo {
+    color: #ffffff !important;
+  }
 }
 
-li a.router-link-active {
-  background-color: #4461f2;
-  color: #ffffff;
-  border-radius: 7px;
+.p-password {
+  display: block;
+  width: 100%;
+
+  .p-password-input {
+    width: 100%;
+  }
 }

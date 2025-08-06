@@ -33,12 +33,11 @@
       </div>
 
       <div>
-        <input
-          class="w-[100%]"
-          type="password"
-          pInputText
-          formControlName="password"
+        <p-password
+          [toggleMask]="true"
           placeholder="password"
+          formControlName="password"
+          [feedback]="false"
         />
 
         @if(LoginForm.get('password')?.invalid
@@ -64,13 +63,18 @@
       </div>
       <div class="flex justify-end">
         <a
-          [routerLink]="['/authlayout/revoverpassword']"
+          [routerLink]="['/authlayout/recoverpassword']"
           class="cursor-pointer capitalize text-blue-500"
           >recover password ?</a
         >
       </div>
 
       <p-button label="Sign In" type="submit" class="" />
+      @if (isloading) {
+      <div class="card flex justify-center">
+        <p-progress-spinner ariaLabel="loading" />
+      </div>
+      }
 
       <p class="text-center capitalize">or continue with</p>
       <div class="icons flex justify-between">
