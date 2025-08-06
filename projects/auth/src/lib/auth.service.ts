@@ -5,7 +5,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { AuthapiadaptService } from './adaptor/authapi.adaptor';
 import { AuthEndPoind } from './enums/authendpoind';
 import { autthapi } from './base/authapi';
-import { Auth, AuthResponse, forgetform, forgetpass, LoginForm, registerForm } from './interfaces/auth';
+import { Auth, AuthResponse, forgetform, forgetpass, LoginForm, registerForm, ResetCode, ResetCodeform, setpass, setpassform } from './interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,13 @@ signup(data:registerForm):Observable<AuthResponse>{
 
     return this._httpclient.post<forgetpass>(this._baseurl+AuthEndPoind.FORGETPASSWORD,data).pipe(map(res=>res))
 }
-
+ resetcode(data: ResetCodeform): Observable<ResetCode> {
+    return this._httpclient.post<ResetCode>(this._baseurl+AuthEndPoind.RESETCODE,data).pipe(map(res=>res))
+}
+ setpass(data: setpassform): Observable<setpass> {
+  return this._httpclient.put<setpass>(this._baseurl+AuthEndPoind.RESETPASSWORD,data).pipe(map(res=>res))
+    
+}
 
 }
 
