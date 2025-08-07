@@ -51,7 +51,7 @@ signup(data:registerForm):Observable<AuthResponse>{
  resetcode(data: ResetCodeform): Observable<ResetCode> {
     return this._httpclient.post<ResetCode>(this._baseurl+AuthEndPoind.RESETCODE,data).pipe(map(res=>res))
 }
- setpass(data: setpassform): Observable<setpass> {
+ setpass(data:setpassform): Observable<setpass> {
   return this._httpclient.put<setpass>(this._baseurl+AuthEndPoind.RESETPASSWORD,data).pipe(map(res=>res))
     
 }

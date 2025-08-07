@@ -1,4 +1,3 @@
-import { setpass, setpassform } from './../../../../projects/auth/src/lib/interfaces/auth';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Message } from 'primeng/message';
@@ -54,6 +53,7 @@ export class RecoverpasswordComponent {
   section2:boolean=false
   section3:boolean=false
   otpmess:string =''
+  email:string =''
 
      isloading:boolean=false
 
@@ -61,8 +61,12 @@ export class RecoverpasswordComponent {
 
   submitforget(){
             this.isloading=true
+            //تخزين الايميل
+            let userEmail= this.recoverform.value
+            this.email =userEmail.email
+            
 
-    this._authService.ForgetPassword(this.recoverform.value).subscribe({
+    this._authService.ForgetPassword(userEmail).subscribe({
       next:(res)=>{
         console.log(res)
         this.isloading=false
@@ -79,10 +83,12 @@ export class RecoverpasswordComponent {
   }
 
   submitreset(){
-
-    this._authService.resetcode(this.resetcode.value).subscribe({
+            this.isloading=true
+    this._authService.resetcode(this.recoverform.value).subscribe({
       next:(res)=>{
                 console.log(res)
+                        this.isloading=false
+
                  this.section1=false
         this.section2=false
         this.section3=true
@@ -95,7 +101,10 @@ export class RecoverpasswordComponent {
 
   }
 
+
   submitsetpass(){
+    
+    
     this._authService.setpass(this.setpassform.value).subscribe({
       next:(res)=>{
         console.log(res)
