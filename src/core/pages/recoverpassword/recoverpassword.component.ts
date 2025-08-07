@@ -148,7 +148,7 @@ export class RecoverpasswordComponent {
       next:(res)=>{
                 this.isloading=false
 
-        console.log("نجح",res)
+        console.log(res)
 
         this._router.navigate(['/authlayout/login'])
 
