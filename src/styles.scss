@@ -1,1 +1,65 @@
-@use "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.p-button {
+  background-color: #4461f2 !important;
+  color: #ffffff !important;
+  width: 100% !important;
+  border-radius: 35px !important;
+}
+
+.main-text {
+  .text {
+    display: block;
+  }
+}
+
+.p-inputtext {
+  --p-inputtext-background: rgba(249, 249, 249, 1);
+  --p-inputtext-border-color: rgba(224, 224, 233, 1);
+  color: #4461f2 !important;
+}
+
+.text-sh {
+  box-shadow: 20px 5px 100px 0 rgba(0, 0, 0, 0.1);
+  background-color: rgba(240, 244, 252, 1);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.text-br {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+li a {
+  padding: 10px 15px;
+  transition: all 0.5s ease-in-out;
+
+  &.router-link-active {
+    background-color: #4461f2;
+    color: #ffffff;
+    border-radius: 7px;
+  }
+  .clo {
+    color: #ffffff !important;
+  }
+}
+
+.p-password {
+  display: block;
+  width: 100%;
+
+  .p-password-input {
+    width: 100%;
+  }
+}

@@ -5,10 +5,17 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideAnimationsAsync}from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { BASE_URL } from 'auth';
+
+
 
 export const appConfig: ApplicationConfig = {
   
   providers: [
+        provideHttpClient(withFetch()),
+
+
      provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     providePrimeNG({
@@ -17,11 +24,13 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     
+
+
     
-    
-    
-    
-    
+    {
+      provide:BASE_URL,
+      useValue :'https://exam.elevateegy.com/'
+    },
     
     
     
@@ -31,6 +40,7 @@ export const appConfig: ApplicationConfig = {
     
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
+
    
    
   
