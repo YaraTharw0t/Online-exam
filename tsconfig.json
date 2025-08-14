@@ -4,6 +4,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "auth": [
+        "./dist/auth"
+      ]
      
     },
     "outDir": "./dist/out-tsc",
