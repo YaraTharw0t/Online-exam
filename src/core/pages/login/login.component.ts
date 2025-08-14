@@ -29,7 +29,7 @@ export class LoginComponent {
 
     LoginForm:FormGroup =new FormGroup({
       'email': new FormControl(null,[Validators.required,Validators.email]),
-      'password': new FormControl(null, [Validators.required,Validators.pattern("^[A-Z].{0,8}$")])
+      'password': new FormControl(null, [Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
     })
 
  _authService= inject(AuthService)
@@ -45,10 +45,17 @@ export class LoginComponent {
             console.log(res)
             if(res.message=="success"){
               localStorage.setItem('_token',res.token)
-              this._router.navigate(['/blanklayout/dashboard'])
+              this._router.navigate(['/mainlayout/dashboard'])
    this.isloading=false
 
             }
+
+          },
+
+          error:(err)=>{
+            console.log(err)
+               this.isloading=false
+
 
           }
         })

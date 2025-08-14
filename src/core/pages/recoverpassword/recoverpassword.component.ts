@@ -41,8 +41,8 @@ export class RecoverpasswordComponent {
   })
   restpassform:FormGroup =new FormGroup({
 
-'newPassword': new FormControl(null, [Validators.required , Validators.pattern("^[A-Z].{0,10}$")]),
-      'rePassword': new FormControl(null, [Validators.required,Validators.pattern("^[A-Z].{0,10}$")]),
+'newPassword': new FormControl(null, [Validators.required , Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
+      'rePassword': new FormControl(null, [Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
 
 
 

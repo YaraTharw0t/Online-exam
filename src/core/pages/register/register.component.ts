@@ -26,8 +26,8 @@ export class RegisterComponent {
       'firstName': new FormControl(null,[Validators.required,Validators.pattern("^[A-Z][a-z]*$")]),
       'lastName': new FormControl(null, [Validators.required,Validators.pattern("^[A-Z][a-z]*$")]),
       'email': new FormControl(null, [Validators.required,Validators.email]),
-      'password': new FormControl(null, [Validators.required , Validators.pattern("^[A-Z].{0,10}$")]),
-      'rePassword': new FormControl(null, [Validators.required,Validators.pattern("^[A-Z].{0,10}$")]),
+      'password': new FormControl(null, [Validators.required , Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
+      'rePassword': new FormControl(null, [Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
       'phone': new FormControl(null, [Validators.required,Validators.pattern("^01[0125][0-9]{8}$")])
     })
 

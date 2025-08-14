@@ -5,7 +5,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideAnimationsAsync}from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { myHTTPInterceptor } from '../../projects/auth/src/lib/interceptors/my-http.interceptor';
 import { BASE_URL } from 'auth';
 
 
@@ -13,7 +14,9 @@ import { BASE_URL } from 'auth';
 export const appConfig: ApplicationConfig = {
   
   providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(withFetch(),
+      withInterceptors([myHTTPInterceptor])),
+
 
 
      provideClientHydration(withEventReplay()),

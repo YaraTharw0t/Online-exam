@@ -56,6 +56,14 @@ signup(data:registerForm):Observable<AuthResponse>{
     
 }
 
+//  logout(): Observable<comelogout> {
+
+//   return this._httpclient.get<comelogout>(this._baseurl+AuthEndPoind.LOGOUT).pipe(map(res=>res))
+    
+// }
+
+
+
 
 
 
