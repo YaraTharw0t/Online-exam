@@ -3,7 +3,8 @@ import { authGuard } from '../shared/Guards/auth.guard';
 
 export const routes: Routes = [
 
-    {path:'',redirectTo:'mainlayout',pathMatch:'full'},
+
+    {path:'', redirectTo:'mainlayout',pathMatch:'full'},
 
       {path:'mainlayout' , loadComponent:()=>import('../feature/layouts/mainlayout/mainlayout.component').then(c=>c.MainlayoutComponent),
         canActivate:[authGuard],
@@ -14,12 +15,12 @@ export const routes: Routes = [
             
             {
             path:'dashboard' , loadComponent:()=>import('../feature/pages/dashboard/dashboard.component').then(c=>c.DashboardComponent),
-                    title:'Dashboard',
+                    title:'Dashboard/Subjects',
 
         },
             {
-            path:'selectdiploma' , loadComponent:()=>import('../feature/pages/selectdiploma/selectdiploma.component').then(c=>c.SelectdiplomaComponent),
-                    title:'Selectdiploma',
+            path:'exams' , loadComponent:()=>import('../feature/pages/exams/exams.component').then(c=>c.ExamsComponent),
+                    title:'exams',
 
         },
     
@@ -28,7 +29,7 @@ export const routes: Routes = [
 
     },
 
-    {path:'',redirectTo:'authlayout',pathMatch:'full'},
+    // {path:'',redirectTo:'authlayout',pathMatch:'full'},
 
     {
         path: 'authlayout', loadComponent:()=> import('../core/layout/authlayout/authlayout.component').then(c=> c.AuthlayoutComponent),

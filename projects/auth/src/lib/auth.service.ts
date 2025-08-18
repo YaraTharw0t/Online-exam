@@ -5,7 +5,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { AuthapiadaptService } from './adaptor/authapi.adaptor';
 import { AuthEndPoind } from './enums/authendpoind';
 import { autthapi } from './base/authapi';
-import { Auth, AuthResponse, forgetform, forgetpass, LoginForm, registerForm, ResetCode, ResetCodeform, setpass, setpassform } from './interfaces/auth';
+import { Auth, AuthResponse, forgetform, forgetpass, LoginForm, registerForm, ResetCode, ResetCodeform, setpass, setpassform, comelogout } from './interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -56,11 +56,11 @@ signup(data:registerForm):Observable<AuthResponse>{
     
 }
 
-//  logout(): Observable<comelogout> {
+ logout(): Observable<comelogout> {
 
-//   return this._httpclient.get<comelogout>(this._baseurl+AuthEndPoind.LOGOUT).pipe(map(res=>res))
+  return this._httpclient.get<comelogout>(this._baseurl+AuthEndPoind.LOGOUT).pipe(map(res=>res))
     
-// }
+}
 
 
 

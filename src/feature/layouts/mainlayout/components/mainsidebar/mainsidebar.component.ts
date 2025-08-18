@@ -16,19 +16,21 @@ export class MainsidebarComponent {
 
 logout(){
 
-  // this._authService.logout().subscribe({
-  //   next:(res)=>{
-  //     console.log(res)
+  this._authService.logout().subscribe({
+    next:(res)=>{
+      console.log(res)
       localStorage.removeItem('_token')
       this._router.navigate(['/authlayout/login'])
 
 
-//     },
+    },
 
-//     error:(err)=>{
-// console.log(err)
-//     }
-//   })
+    error:(err)=>{
+      localStorage.removeItem("_token")
+      this._router.navigate(["/authlayout/login"])
+console.log(err)
+    }
+  })
 
  }
 

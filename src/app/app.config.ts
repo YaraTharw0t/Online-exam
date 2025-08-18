@@ -5,7 +5,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideAnimationsAsync}from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { myHTTPInterceptor } from '../../projects/auth/src/lib/interceptors/my-http.interceptor';
 import { BASE_URL } from 'auth';
 
@@ -13,12 +13,12 @@ import { BASE_URL } from 'auth';
 
 export const appConfig: ApplicationConfig = {
   
-  providers: [
+  providers: [ 
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
         provideHttpClient(withFetch(),
-      withInterceptors([myHTTPInterceptor])),
-
-
-
+      withInterceptors([myHTTPInterceptor])
+    ),
      provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     providePrimeNG({
@@ -32,22 +32,9 @@ export const appConfig: ApplicationConfig = {
     
     {
       provide:BASE_URL,
-      useValue :'https://exam.elevateegy.com/'
+      useValue :'https://exam.elevateegy.com/api/v1'
     },
     
     
-    
-    
-    
-    
-    
-    provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes), 
-
-   
-   
-  
-  
-  
   ]
 };

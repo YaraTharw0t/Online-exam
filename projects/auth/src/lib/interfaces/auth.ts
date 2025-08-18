@@ -77,4 +77,6 @@ export interface AuthResponse {
   newPassword:string
  }
 
-
+export interface comelogout{
+  message:string
+}

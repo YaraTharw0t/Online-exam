@@ -50,7 +50,14 @@ export class RegisterComponent {
 
           }
 
-        }
+        },
+        
+          error:(err)=>{
+            console.log(err)
+               this.isloading=false
+
+
+          }
       })
     }
     
