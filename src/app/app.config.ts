@@ -7,6 +7,8 @@ import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura'
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BASE_URL } from 'auth';
+import { env } from '../enviroment/env';
+
 
 
 
@@ -29,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     
     {
       provide:BASE_URL,
-      useValue :'https://exam.elevateegy.com/'
+      useValue :env.apiurl
     },
     
     
