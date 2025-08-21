@@ -19,9 +19,7 @@ export const routes: Routes = [
 
         },
             {
-            path:'exams' , loadComponent:()=>import('../feature/pages/exams/exams.component').then(c=>c.ExamsComponent),
-                    title:'exams',
-
+                path:'subject/:subjectId', loadComponent:()=>import('../feature/pages/subsubject/subsubject.component').then(c=>c.SubsubjectComponent)
         },
     
     

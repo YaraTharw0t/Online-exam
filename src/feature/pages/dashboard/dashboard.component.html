@@ -7,16 +7,21 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-    @for(item of subject|slice:0:limit ; track item._id ){
-    <div class="card shadow-lg rounded-xl overflow-hidden relative h-[80%]">
-      <img [src]="[item.icon]" alt="" class="h-96 w-full object-cover" />
+    @for(subject of Subjects|slice:0:limit ; track subject._id ){
+    <a
+      class="card shadow-lg rounded-xl overflow-hidden relative h-[80%]"
+      [routerLink]="['/mainlayout/subject', subject._id]"
+    >
+      <img [src]="[subject.icon]" alt="" class="h-96 w-full object-cover" />
       <div
         class="text absolute bottom-10 left-10 rounded-xl text-white capitalize text-center w-[70%] text-xs font-bold"
       >
-        <h3>{{ item.name }}</h3>
+        <h3>{{ subject.name }}</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
-    </div>
+    </a>
+    } @empty {
+    <p>جاري تحميل المواد...</p>
     }
   </div>
 </section>
