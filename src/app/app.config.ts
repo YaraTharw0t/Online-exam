@@ -8,6 +8,8 @@ import Aura from '@primeng/themes/aura'
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { myHTTPInterceptor } from '../shared/interceptors/my-http.interceptor';
 import { BASE_URL } from 'auth';
+import { env } from '../enviroment/env';
+
 
 
 
@@ -32,7 +34,7 @@ export const appConfig: ApplicationConfig = {
     
     {
       provide:BASE_URL,
-      useValue :'https://exam.elevateegy.com/api/v1'
+      useValue :env.apiurl
     },
     
     

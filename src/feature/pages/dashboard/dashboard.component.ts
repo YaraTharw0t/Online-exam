@@ -5,6 +5,7 @@ import { Subject } from '../../../shared/interfaces/subjects';
 import { SlicePipe } from '@angular/common';
 import { Exam } from '../../../shared/interfaces/exams';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class DashboardComponent {
 
+  private allsubjecrsubscrition :Subscription |undefined
 
 
   _subjectService= inject(SubjectService)
@@ -32,7 +34,7 @@ export class DashboardComponent {
 
 
   getallSubject(){
-    this._subjectService.Getallsub().subscribe({
+    this.allsubjecrsubscrition= this._subjectService.Getallsub().subscribe({
       next:(res)=>{
           console.log(res)
           this.Subjects = res.subjects
@@ -65,6 +67,10 @@ export class DashboardComponent {
   }
 
 
-
+ngOnDestroy(): void {
+ if(this.allsubjecrsubscrition){
+  this.allsubjecrsubscrition.unsubscribe()
+ }
+}
 
 }

@@ -10,9 +10,19 @@
   }
 } */
 
+:root {
+  --background-color: #ffffff;
+  --color: #000000;
+  --secound-background-color: #4461f2;
+  --primary-color: #4461f2;
+  --secound-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-bg: rgba(240, 244, 252, 1);
+}
+
 body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--background-color);
+  color: var(--color);
 }
 
 .p-button {
@@ -31,12 +41,12 @@ body {
 .p-inputtext {
   --p-inputtext-background: rgba(249, 249, 249, 1);
   --p-inputtext-border-color: rgba(224, 224, 233, 1);
-  color: #4461f2 !important;
+  color: var(--primary-color) !important;
 }
 
 .text-sh {
-  box-shadow: 20px 5px 100px 0 rgba(0, 0, 0, 0.1);
-  background-color: rgba(240, 244, 252, 1);
+  box-shadow: 20px 5px 100px 0 var(--shadow-color);
+  background-color: var(--shadow-bg);
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
@@ -44,7 +54,7 @@ body {
 .text-br {
   padding: 10px;
   border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color);
 }
 
 li a {
@@ -54,11 +64,11 @@ li a {
 
   &.router-link-active {
     background-color: #4461f2;
-    color: #ffffff;
+    color: var(--secound-color);
     border-radius: 7px;
 
     i {
-      color: #ffffff;
+      color: var(--secound-color);
     }
   }
 }
