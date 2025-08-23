@@ -1,0 +1,99 @@
+<section>
+  <h3 class="font-bold text-2xl pb-[3rem] capitalize">sign in</h3>
+
+  <form [formGroup]="LoginForm" (ngSubmit)="OnSubmitlog()">
+    <div class="card grid gap-5 w-[50%]">
+      <div>
+        <input
+          class="w-[100%]"
+          type="text"
+          pInputText
+          formControlName="email"
+          placeholder="Enter yor email"
+        />
+        @if(LoginForm.get('email')?.invalid
+        &&(LoginForm.get('email')?.touched||LoginForm.get('email')?.dirty)){
+        <div class="error">
+          @if(LoginForm.get('email')?.hasError('required')){
+          <div class="card">
+            <p-message class="capitalize" severity="error"
+              >please enter email</p-message
+            >
+          </div>
+          } @if(LoginForm.get('email')?.hasError('email')){
+          <div class="card">
+            <p-message class="capitalize" severity="error"
+              >Please enter a valid email address.
+            </p-message>
+          </div>
+          }
+        </div>
+
+        }
+      </div>
+
+      <div>
+        <p-password
+          [toggleMask]="true"
+          placeholder="password"
+          formControlName="password"
+          [feedback]="false"
+        />
+
+        @if(LoginForm.get('password')?.invalid
+        &&(LoginForm.get('password')?.touched||LoginForm.get('password')?.dirty)){
+        <div class="error">
+          @if(LoginForm.get('password')?.hasError('required')){
+          <div class="card">
+            <p-message class="capitalize" severity="error"
+              >please enter password</p-message
+            >
+          </div>
+          } @if(LoginForm.get('password')?.hasError('pattern')){
+          <div class="card">
+            <p-message class="capitalize" severity="error"
+              >Password must start with a capital letter and be less than 10
+              characters long
+            </p-message>
+          </div>
+          }
+        </div>
+
+        }
+      </div>
+      <div class="flex justify-end">
+        <a
+          [routerLink]="['/authlayout/recoverpassword']"
+          class="cursor-pointer capitalize text-blue-500"
+          >recover password ?</a
+        >
+      </div>
+
+      <p-button label="Sign In" type="submit" styleClass="btn-primary" />
+      @if (isloading) {
+      <div class="card flex justify-center">
+        <p-progress-spinner ariaLabel="loading" />
+      </div>
+      }
+
+      <p class="text-center capitalize">or continue with</p>
+      <div class="icons flex justify-between">
+        <a href="">
+          <img src="../Google Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Twitter Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Facebook Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Apple Button.svg" alt="" />
+        </a>
+      </div>
+    </div>
+  </form>
+</section>

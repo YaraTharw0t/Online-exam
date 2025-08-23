@@ -1,0 +1,27 @@
+<section class="shadow-lg w-[85%]">
+  <div
+    class="test capitalize flex justify-between text-blue-500 font-bold mb-4"
+  >
+    <h3>quizes</h3>
+    <h3 (click)="ViewAll()" class="view">view all</h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+    @for(subject of Subjects|slice:0:limit ; track subject._id ){
+    <a
+      class="card shadow-lg rounded-xl overflow-hidden relative h-[80%]"
+      [routerLink]="['/mainlayout/subject', subject._id]"
+    >
+      <img [src]="[subject.icon]" alt="" class="h-96 w-full object-cover" />
+      <div
+        class="text absolute bottom-10 left-10 rounded-xl text-white capitalize text-center w-[70%] text-xs font-bold"
+      >
+        <h3>{{ subject.name }}</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+    </a>
+    } @empty {
+    <p>جاري تحميل المواد...</p>
+    }
+  </div>
+</section>
