@@ -7,6 +7,10 @@ import { Message } from 'primeng/message';
 import { PasswordModule } from 'primeng/password';
 import { ProgressSpinner } from 'primeng/progressspinner';
 import { AuthService } from 'auth';
+import { Password_Pattern} from '../../../core/constants/regex.constants';
+import { ErrMsgComponent } from '../../../shared/err-msg/err-msg.component';
+import { Subscription } from 'rxjs';
+
 
 
 
@@ -19,7 +23,7 @@ import { AuthService } from 'auth';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink,ButtonModule,ReactiveFormsModule,FormsModule,InputTextModule,Message,PasswordModule,ProgressSpinner],
+  imports: [RouterLink,ButtonModule,ReactiveFormsModule,FormsModule,InputTextModule,PasswordModule,ProgressSpinner,ErrMsgComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -29,18 +33,19 @@ export class LoginComponent {
 
     LoginForm:FormGroup =new FormGroup({
       'email': new FormControl(null,[Validators.required,Validators.email]),
-      'password': new FormControl(null, [Validators.required,Validators.pattern("^[A-Z].{0,8}$")])
+      'password': new FormControl(null, [Validators.required,Validators.pattern(Password_Pattern)])
     })
 
  _authService= inject(AuthService)
  _router= inject(Router)
      isloading:boolean=false
 
+     private loginsubscription : Subscription | undefined
 
       OnSubmitlog(){
    this.isloading=true
 
-        this._authService.Login(this.LoginForm.value).subscribe({
+     this.loginsubscription  = this._authService.Login(this.LoginForm.value).subscribe({
           next:(res)=>{
             console.log(res)
             if(res.message=="success"){
@@ -56,4 +61,11 @@ export class LoginComponent {
       }
 
 
+
+      ngOnDestroy(): void {
+       if(this.loginsubscription){
+        this.loginsubscription.unsubscribe()
+       }
+        
+      }
 }

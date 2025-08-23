@@ -1,3 +1,4 @@
+import { ErrMsgComponent } from './../../../shared/err-msg/err-msg.component';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Message } from 'primeng/message';
@@ -10,6 +11,7 @@ import { PasswordModule } from 'primeng/password';
 import { setpassform } from '../../../../projects/auth/src/public-api';
 import { log } from 'node:console';
 import { JsonPipe } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 
 
@@ -18,7 +20,7 @@ import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-recoverpassword',
-  imports: [Message,InputTextModule,RouterLink,ProgressSpinner,ButtonModule,ReactiveFormsModule,PasswordModule,],
+  imports: [Message,InputTextModule,RouterLink,ProgressSpinner,ButtonModule,ReactiveFormsModule,PasswordModule,ErrMsgComponent],
   templateUrl: './recoverpassword.component.html',
   styleUrl: './recoverpassword.component.scss'
 })
@@ -49,8 +51,8 @@ export class RecoverpasswordComponent {
   })
 
 
-
-
+  //key for turn off all subscribe
+  private destroy$ = new Subject<void>();
 
   section1:boolean=true
   section2:boolean=false
@@ -72,7 +74,9 @@ export class RecoverpasswordComponent {
             this.email =userEmail.email
             
 
-    this._authService.ForgetPassword(userEmail).subscribe({
+    this._authService.ForgetPassword(userEmail).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe({
       next:(res)=>{
         console.log(res)
         this.isloading=false
@@ -97,7 +101,9 @@ export class RecoverpasswordComponent {
 
   submitreset(){
             this.isloading=true
-    this._authService.resetcode(this.resetcode.value).subscribe({
+    this._authService.resetcode(this.resetcode.value).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe({
       next:(res)=>{
                         this.isloading=false
 
@@ -144,7 +150,9 @@ export class RecoverpasswordComponent {
       }
             this.isloading=true
 
- this._authService.setpass(datatosend).subscribe({
+ this._authService.setpass(datatosend).pipe(
+  takeUntil(this.destroy$)
+ ).subscribe({
       next:(res)=>{
                 this.isloading=false
 
@@ -170,6 +178,12 @@ export class RecoverpasswordComponent {
 
 
    
+  }
+
+  ngOnDestroy(): void {
+   this.destroy$.next()
+   this.destroy$.complete()
+    
   }
 
 }

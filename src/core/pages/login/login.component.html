@@ -11,25 +11,7 @@
           formControlName="email"
           placeholder="Enter yor email"
         />
-        @if(LoginForm.get('email')?.invalid
-        &&(LoginForm.get('email')?.touched||LoginForm.get('email')?.dirty)){
-        <div class="error">
-          @if(LoginForm.get('email')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter email</p-message
-            >
-          </div>
-          } @if(LoginForm.get('email')?.hasError('email')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Please enter a valid email address.
-            </p-message>
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg [control]="LoginForm.get('email')"></app-err-msg>
       </div>
 
       <div>
@@ -40,26 +22,11 @@
           [feedback]="false"
         />
 
-        @if(LoginForm.get('password')?.invalid
-        &&(LoginForm.get('password')?.touched||LoginForm.get('password')?.dirty)){
-        <div class="error">
-          @if(LoginForm.get('password')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter password</p-message
-            >
-          </div>
-          } @if(LoginForm.get('password')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Password must start with a capital letter and be less than 10
-              characters long
-            </p-message>
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg
+          [control]="LoginForm.get('password')"
+          patternmsg="Password must start with a capital letter and be less than 10
+              characters long"
+        ></app-err-msg>
       </div>
       <div class="flex justify-end">
         <a
@@ -69,7 +36,7 @@
         >
       </div>
 
-      <p-button label="Sign In" type="submit" class="" />
+      <p-button label="Sign In" type="submit" [disabled]="isloading" />
       @if (isloading) {
       <div class="card flex justify-center">
         <p-progress-spinner ariaLabel="loading" />

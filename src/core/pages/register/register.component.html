@@ -10,33 +10,7 @@
           formControlName="username"
           placeholder="User Name"
         />
-
-        @if(RegisterForm.get('username')?.invalid &&
-        (RegisterForm.get('username')?.touched||RegisterForm.get('username')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('username')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter user name</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('username')?.hasError('minlength')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Username must be at least 5 characters.
-            </p-message>
-          </div>
-          } @if(RegisterForm.get('username')?.hasError('maxlength')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Username cannot be longer than 15 characters.
-            </p-message>
-          </div>
-
-          }
-        </div>
-
-        }
+        <app-err-msg [control]="RegisterForm.get('username')"></app-err-msg>
       </div>
       <div>
         <input
@@ -47,25 +21,10 @@
           placeholder="First Name"
         />
 
-        @if(RegisterForm.get('firstName')?.invalid
-        &&(RegisterForm.get('firstName')?.touched||RegisterForm.get('firstName')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('firstName')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter first name</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('firstName')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >first letter must be uppercase</p-message
-            >
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg
+          [control]="RegisterForm.get('firstName')"
+          patternmsg="first letter must be uppercase"
+        ></app-err-msg>
       </div>
       <div>
         <input
@@ -76,25 +35,10 @@
           placeholder="Last Name"
         />
 
-        @if(RegisterForm.get('lastName')?.invalid
-        &&(RegisterForm.get('lastName')?.touched||RegisterForm.get('lastName')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('lastName')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter last name</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('lastName')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >first letter must be uppercase</p-message
-            >
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg
+          [control]="RegisterForm.get('lastName')"
+          patternmsg="first letter must be uppercase"
+        ></app-err-msg>
       </div>
       <div>
         <input
@@ -104,26 +48,7 @@
           formControlName="email"
           placeholder="Enter yor email"
         />
-
-        @if(RegisterForm.get('email')?.invalid
-        &&(RegisterForm.get('email')?.touched||RegisterForm.get('email')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('email')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter email</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('email')?.hasError('email')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Please enter a valid email address.
-            </p-message>
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg [control]="RegisterForm.get('email')"></app-err-msg>
       </div>
       <div>
         <p-password
@@ -132,26 +57,11 @@
           placeholder="password"
           [feedback]="false"
         />
-        @if(RegisterForm.get('password')?.invalid
-        &&(RegisterForm.get('password')?.touched||RegisterForm.get('password')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('password')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter password</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('password')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >Password must start with a capital letter and be less than 10
-              characters long
-            </p-message>
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg
+          [control]="RegisterForm.get('password')"
+          patternmsg="Password must start with a capital letter and be less than 10
+              characters long"
+        ></app-err-msg>
       </div>
       <div>
         <p-password
@@ -161,26 +71,11 @@
           [feedback]="false"
         />
 
-        @if(RegisterForm.get('rePassword')?.invalid
-        &&(RegisterForm.get('rePassword')?.touched||RegisterForm.get('rePassword')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('rePassword')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter repassword</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('rePassword')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >"Password must start with a capital letter and be less than 10
-              characters long.
-            </p-message>
-          </div>
-          }
-        </div>
-
-        }
+        <app-err-msg
+          [control]="RegisterForm.get('rePassword')"
+          patternmsg="Password must start with a capital letter and be less than 10
+              characters long"
+        ></app-err-msg>
       </div>
       <div>
         <input
@@ -190,25 +85,11 @@
           formControlName="phone"
           placeholder="Phone"
         />
-        @if(RegisterForm.get('phone')?.invalid
-        &&(RegisterForm.get('phone')?.touched||RegisterForm.get('phone')?.dirty)){
-        <div class="error">
-          @if(RegisterForm.get('phone')?.hasError('required')){
-          <div class="card">
-            <p-message class="capitalize" severity="error"
-              >please enter phone</p-message
-            >
-          </div>
-          } @if(RegisterForm.get('phone')?.hasError('pattern')){
-          <div class="card">
-            <p-message class="capitalize" severity="error">
-              Please enter a valid Egyptian mobile number.
-            </p-message>
-          </div>
-          }
-        </div>
 
-        }
+        <app-err-msg
+          [control]="RegisterForm.get('phone')"
+          patternmsg="should be egyption phone"
+        ></app-err-msg>
       </div>
 
       <div class="flex justify-center">
@@ -223,7 +104,7 @@
       </div>
 
       <div>
-        <p-button label="Create Account" type="submit" />
+        <p-button label="Create Account" type="submit" [disabled]="isloading" />
         @if (isloading) {
         <div class="card flex justify-center">
           <p-progress-spinner ariaLabel="loading" />
