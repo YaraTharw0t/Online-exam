@@ -1,0 +1,5 @@
+export const Password_Pattern = '^[A-Z].{0,8}$'
+export const rePassword_Pattern = '^[A-Z].{0,8}$'
+export const FirstName_Pattern = '^[A-Z][a-z]*$'
+export const lastName_Pattern = '^[A-Z][a-z]*$'
+export const phone_Pattern = '^01[0125][0-9]{8}$'

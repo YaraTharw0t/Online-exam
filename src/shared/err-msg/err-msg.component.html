@@ -1,0 +1,38 @@
+@if(control?.invalid && (control?.touched|| control?.dirty)){
+@if(control?.hasError("required")){
+
+<div class="card">
+  <p-message class="capitalize" severity="error"
+    >This field is required.</p-message
+  >
+</div>
+} @if(control?.hasError("email")){
+
+<div class="card">
+  <p-message class="capitalize" severity="error"
+    >Please enter a valid email address.</p-message
+  >
+</div>
+}
+
+<!-- for pattern password -->
+@if(control?.hasError("pattern")){
+
+<div class="card">
+  <p-message class="capitalize" severity="error">{{ patternmsg }}</p-message>
+</div>
+} @if(control?.hasError("minlength")){
+
+<div class="card">
+  <p-message class="capitalize" severity="error"
+    >less than 5 letters.</p-message
+  >
+</div>
+} @if(control?.hasError("maxlength")){
+
+<div class="card">
+  <p-message class="capitalize" severity="error"
+    >more than 15 letters.</p-message
+  >
+</div>
+} }

@@ -1,0 +1,134 @@
+<section>
+  <h3 class="font-bold text-2xl pb-[3rem] capitalize">sign up</h3>
+  <form [formGroup]="RegisterForm" (ngSubmit)="OnSubmit()">
+    <div class="card grid gap-5 w-[50%]">
+      <div>
+        <input
+          class="w-[100%]"
+          type="text"
+          pInputText
+          formControlName="username"
+          placeholder="User Name"
+        />
+        <app-err-msg [control]="RegisterForm.get('username')"></app-err-msg>
+      </div>
+      <div>
+        <input
+          class="w-[100%]"
+          type="text"
+          pInputText
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+
+        <app-err-msg
+          [control]="RegisterForm.get('firstName')"
+          patternmsg="first letter must be uppercase"
+        ></app-err-msg>
+      </div>
+      <div>
+        <input
+          class="w-[100%]"
+          type="text"
+          pInputText
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+
+        <app-err-msg
+          [control]="RegisterForm.get('lastName')"
+          patternmsg="first letter must be uppercase"
+        ></app-err-msg>
+      </div>
+      <div>
+        <input
+          class="w-[100%]"
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Enter yor email"
+        />
+        <app-err-msg [control]="RegisterForm.get('email')"></app-err-msg>
+      </div>
+      <div>
+        <p-password
+          [toggleMask]="true"
+          formControlName="password"
+          placeholder="password"
+          [feedback]="false"
+        />
+        <app-err-msg
+          [control]="RegisterForm.get('password')"
+          patternmsg="Password must start with a capital letter and be less than 10
+              characters long"
+        ></app-err-msg>
+      </div>
+      <div>
+        <p-password
+          [toggleMask]="true"
+          placeholder="repassword"
+          formControlName="rePassword"
+          [feedback]="false"
+        />
+
+        <app-err-msg
+          [control]="RegisterForm.get('rePassword')"
+          patternmsg="Password must start with a capital letter and be less than 10
+              characters long"
+        ></app-err-msg>
+      </div>
+      <div>
+        <input
+          class="w-[100%]"
+          type="tel"
+          pInputText
+          formControlName="phone"
+          placeholder="Phone"
+        />
+
+        <app-err-msg
+          [control]="RegisterForm.get('phone')"
+          patternmsg="should be egyption phone"
+        ></app-err-msg>
+      </div>
+
+      <div class="flex justify-center">
+        <p>Already have an account?</p>
+        <a
+          [routerLink]="['/authlayout/login']"
+          routerLinkActive="active"
+          class="flex justify-end cursor-pointer capitalize text-blue-500"
+        >
+          Login
+        </a>
+      </div>
+
+      <div>
+        <p-button label="Create Account" type="submit" [disabled]="isloading" />
+        @if (isloading) {
+        <div class="card flex justify-center">
+          <p-progress-spinner ariaLabel="loading" />
+        </div>
+        }
+      </div>
+      <p class="text-center capitalize">or continue with</p>
+      <div class="icons flex justify-between">
+        <a href="">
+          <img src="../Google Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Twitter Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Facebook Button.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img src="../Apple Button.svg" alt="" />
+        </a>
+      </div>
+    </div>
+  </form>
+</section>

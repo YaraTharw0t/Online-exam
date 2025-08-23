@@ -1,1 +1,78 @@
-@use "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #ffffff;
+  --color: #000000;
+  --secound-background-color: #4461f2;
+  --primary-color: #4461f2;
+  --secound-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-bg: rgba(240, 244, 252, 1);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.main-text {
+  .text {
+    display: block;
+  }
+}
+
+.text-br {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* for button */
+.p-button {
+  background-color: var(--secound-background-color) !important;
+  color: var(--secound-color) !important;
+  width: 100% !important;
+  border-radius: 35px !important;
+}
+.text-sh {
+  box-shadow: 20px 5px 100px 0 var(--shadow-color);
+  background-color: var(--shadow-bg);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+/* for input in primeng */
+.p-inputtext {
+  --p-inputtext-background: rgba(249, 249, 249, 1);
+  --p-inputtext-border-color: rgba(224, 224, 233, 1);
+  color: var(--primary-color) !important;
+}
+
+/* router link */
+li a {
+  padding: 10px 15px;
+  transition: all 0.5s ease-in-out;
+
+  &.router-link-active {
+    background-color: #4461f2;
+    color: var(--secound-color);
+    border-radius: 7px;
+  }
+  .clo {
+    color: var(--secound-color) !important;
+  }
+}
+
+/* for password */
+.p-password {
+  display: block;
+  width: 100%;
+
+  .p-password-input {
+    width: 100%;
+  }
+}
