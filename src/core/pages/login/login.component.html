@@ -69,7 +69,12 @@
         >
       </div>
 
-      <p-button label="Sign In" type="submit" styleClass="btn-primary" />
+      <p-button
+        label="Sign In"
+        type="submit"
+        styleClass="btn-primary"
+        [disabled]="isloading"
+      />
       @if (isloading) {
       <div class="card flex justify-center">
         <p-progress-spinner ariaLabel="loading" />

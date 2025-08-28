@@ -223,7 +223,12 @@
       </div>
 
       <div>
-        <p-button label="Create Account" type="submit" />
+        <p-button
+          label="Create Account"
+          type="submit"
+          styleClass="btn-primary"
+          [disabled]="isloading"
+        />
         @if (isloading) {
         <div class="card flex justify-center">
           <p-progress-spinner ariaLabel="loading" />
