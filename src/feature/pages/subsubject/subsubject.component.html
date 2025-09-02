@@ -1,0 +1,27 @@
+<section>
+  @for(exam of exams ; track exam._id ){
+  <div
+    class="card flex justify-between rounded-2xl capitalize w-[95%] shadow-lg items-center"
+  >
+    <div class="flex gap-7 items-center">
+      <img [src]="getSubImg(exam.subject)" alt="" class="w-[50%]" />
+      <div class="text-1">
+        <h4 class="font-bold">{{ exam.title }}</h4>
+        <p class="mt-4 text-gray-600">{{ exam.numberOfQuestions }} question</p>
+      </div>
+    </div>
+
+    <div class="text-2">
+      <p class="text-gray-600">{{ exam.duration }} mintues</p>
+      <button
+        [routerLink]="['/exam', exam._id]"
+        class="bg-blue-600 text-white rounded-full p-3 mt-4"
+      >
+        start quiez
+      </button>
+    </div>
+  </div>
+  } @empty {
+  <p>No exams available.</p>
+  }
+</section>

@@ -1,0 +1,35 @@
+<div class="page-container">
+  <div class="mobile-sidebar">
+    <section class="my-[3rem] mx-[2rem]">
+      <div class="img">
+        <img src="../Final Logo 1.png" alt="" />
+      </div>
+
+      <ul class="capitalize pt-5">
+        <li class="mt-5">
+          <a
+            [routerLink]="['/mainlayout/dashboard']"
+            routerLinkActive="router-link-active"
+          >
+            <i class="pi pi-bars pr-4 text-blue-500"></i>
+
+            dashboard
+          </a>
+        </li>
+        <li class="mt-5">
+          <a class="flex items-center">
+            <i class="pi pi-clock pr-4 text-blue-500"></i>
+
+            quiz history
+          </a>
+        </li>
+        <li class="mt-5">
+          <a (click)="logout()">
+            <i class="pi pi-external-link pr-4 text-blue-500"></i>
+            log out
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>

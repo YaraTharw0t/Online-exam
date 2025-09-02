@@ -1,1 +1,101 @@
-@use "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @media (max-width: 992px) {
+  .welcome-panel {
+    display: none;
+  }
+} */
+
+:root {
+  --background-color: #ffffff;
+  --color: #000000;
+  --secound-background-color: #4461f2;
+  --primary-color: #4461f2;
+  --secound-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-bg: rgba(240, 244, 252, 1);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.p-button {
+  @apply bg-blue-500 text-white !important;
+}
+.btn-primary {
+  @apply rounded-3xl w-[100%] !important;
+}
+
+.main-text {
+  .text {
+    display: block;
+  }
+}
+
+.p-inputtext {
+  --p-inputtext-background: rgba(249, 249, 249, 1);
+  --p-inputtext-border-color: rgba(224, 224, 233, 1);
+  color: var(--primary-color) !important;
+}
+
+.text-sh {
+  box-shadow: 20px 5px 100px 0 var(--shadow-color);
+  background-color: var(--shadow-bg);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.text-br {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid var(--color);
+}
+
+li a {
+  padding: 10px 15px;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+
+  &.router-link-active {
+    background-color: #4461f2;
+    color: var(--secound-color);
+    border-radius: 7px;
+
+    i {
+      color: var(--secound-color);
+    }
+  }
+}
+
+.p-password {
+  display: block;
+  width: 100%;
+
+  .p-password-input {
+    width: 100%;
+  }
+}
+
+.btn-sec {
+  @apply rounded-xl	 w-[100%] !important;
+}
+
+.p-iconfield {
+  input {
+    @apply w-[100%] border-none shadow rounded-2xl;
+  }
+}
+
+.card .text {
+  background-color: #4461f266;
+}
+
+.view {
+  cursor: pointer;
+}
